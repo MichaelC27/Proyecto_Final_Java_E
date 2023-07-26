@@ -43,9 +43,8 @@ public class frmDetallePlanilla extends javax.swing.JFrame {
         lblTSBruto = new javax.swing.JLabel();
         lblTSNeto = new javax.swing.JLabel();
         btnCerrar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,32 +97,37 @@ public class frmDetallePlanilla extends javax.swing.JFrame {
 
         bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 1000, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Total Salario Bruto: ");
-        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, -1, -1));
+        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 530, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Total Salario neto:");
         bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, -1, -1));
 
+        lblTSBruto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblTSBruto.setText("xxxxxxxx");
-        bg.add(lblTSBruto, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 530, -1, -1));
+        bg.add(lblTSBruto, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 530, -1, -1));
 
+        lblTSNeto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblTSNeto.setText("xxxxxxxxx");
-        bg.add(lblTSNeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 530, -1, -1));
-
-        btnCerrar.setBackground(new java.awt.Color(138, 213, 255));
-        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCerrar.setText("Cerrar");
-        bg.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, -1));
-
-        btnActualizar.setBackground(new java.awt.Color(138, 213, 255));
-        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
+        lblTSNeto.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblTSNetoPropertyChange(evt);
             }
         });
-        bg.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, -1));
+        bg.add(lblTSNeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 530, -1, -1));
+
+        btnCerrar.setBackground(new java.awt.Color(138, 213, 255));
+        btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        bg.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,19 +141,25 @@ public class frmDetallePlanilla extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtPlanillaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jtPlanillaPropertyChange
 
     }//GEN-LAST:event_jtPlanillaPropertyChange
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-       cargarDetallePlanilla();
-    }//GEN-LAST:event_btnActualizarActionPerformed
+    private void lblTSNetoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblTSNetoPropertyChange
+
+    }//GEN-LAST:event_lblTSNetoPropertyChange
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
     public void setIdPlanilla(int idPlanilla) {
-   
+
         this.idPlanilla = idPlanilla;
     }
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
         cargarDetallePlanilla(); // Cargar los detalles de la planilla al abrir el formulario
     }
@@ -183,10 +193,36 @@ public class frmDetallePlanilla extends javax.swing.JFrame {
                 String.valueOf(detalle.getTotal_salario_neto())
             };
             modeloDetalle.addRow(arregloDetalle);
-            lblTSBruto.setText("T.S. Bruto: " + String.valueOf(detalle.getTotal_salario_bruto()));
-            lblTSNeto.setText("T.S. Neto: " + String.valueOf(detalle.getTotal_salario_neto()));
+
+        }
+        double totalSalarioNeto = calcularSumaSalarioNeto(modelo);
+        lblTSNeto.setText(String.valueOf(totalSalarioNeto));
+        double totalSalarioBruto = calcularSumaSalarioBruto(modelo);
+        lblTSBruto.setText(String.valueOf(totalSalarioBruto));
+    }
+
+    private double calcularSumaSalarioNeto(DefaultTableModel modelo) {
+        double totalSalarioNeto = 0.0;
+        int columnaSalarioNeto = 10; // Número de columna correspondiente a "Salario Neto"
+
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            double salarioNeto = Double.parseDouble(modelo.getValueAt(i, columnaSalarioNeto).toString());
+            totalSalarioNeto += salarioNeto;
         }
 
+        return totalSalarioNeto;
+    }
+
+    private double calcularSumaSalarioBruto(DefaultTableModel modelo) {
+        double totalSalarioBruto = 0.0;
+        int columnaSalarioBruto = 7; // Número de columna correspondiente a "Salario Bruto"
+
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            double salarioBruto = Double.parseDouble(modelo.getValueAt(i, columnaSalarioBruto).toString());
+            totalSalarioBruto += salarioBruto;
+        }
+
+        return totalSalarioBruto;
     }
 
     /**
@@ -226,7 +262,6 @@ public class frmDetallePlanilla extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
-    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

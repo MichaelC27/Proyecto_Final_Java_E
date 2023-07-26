@@ -126,6 +126,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
         });
 
         btnBuscar.setBackground(new java.awt.Color(102, 204, 255));
+        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +181,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtDireccion);
 
         btnCalendar.setBackground(new java.awt.Color(102, 204, 255));
-        btnCalendar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCalendar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCalendar.setForeground(new java.awt.Color(255, 255, 255));
         btnCalendar.setText("...");
         btnCalendar.addActionListener(new java.awt.event.ActionListener() {
@@ -252,6 +253,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
         );
 
         btnGuardar.setBackground(new java.awt.Color(102, 204, 255));
+        btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -261,6 +263,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
         });
 
         btnCerrar.setBackground(new java.awt.Color(102, 204, 255));
+        btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -270,6 +273,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
         });
 
         btnEditar.setBackground(new java.awt.Color(102, 204, 255));
+        btnEditar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -279,6 +283,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
         });
 
         btnNuevo.setBackground(new java.awt.Color(102, 204, 255));
+        btnNuevo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -299,7 +304,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
                 .addComponent(btnEditar)
                 .addGap(70, 70, 70)
                 .addComponent(btnGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addComponent(btnCerrar)
                 .addGap(61, 61, 61))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,6 +518,8 @@ public class FrmEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        frmMenu frm = new frmMenu();
+        frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 

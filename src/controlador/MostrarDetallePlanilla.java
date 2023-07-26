@@ -4,10 +4,12 @@
  */
 package controlador;
 
+import com.mysql.jdbc.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 
 /**
  *
@@ -172,8 +174,8 @@ public class MostrarDetallePlanilla {
                 int id_detalle_planilla = rs.getInt(1);
                 int id_planilla = rs.getInt(2);
                 String cedula_empleado = rs.getString(3);
-                String nombre_empleado =rs.getString(4);
-                String apellido_empleado=rs.getString(5);
+                String nombre_empleado = rs.getString(4);
+                String apellido_empleado = rs.getString(5);
                 double horas_trabajadas = rs.getDouble(6);
                 double salario_por_hora = rs.getDouble(7);
                 double seguro_social = rs.getDouble(8);
@@ -181,9 +183,7 @@ public class MostrarDetallePlanilla {
                 double salario_bruto = rs.getDouble(10);
                 double salario_neto = rs.getDouble(11);
                 String fecha_generacion = rs.getString(12);
-                double total_salario_bruto = rs.getDouble(13);
-                double total_salario_neto = rs.getDouble(14);
-
+               
                 MostrarDetallePlanilla obj_detalle_planilla = new MostrarDetallePlanilla(
                         id_detalle_planilla,
                         id_planilla,
@@ -209,5 +209,27 @@ public class MostrarDetallePlanilla {
             return null;
         }
     }
+/*public double obtenerTotalSalarioNeto(int idPlanilla) {
+    try {
+        double totalSalarioNeto = 0;
+        // Llamar al procedimiento almacenado para obtener el total del salario neto
+        PreparedStatement ps = Conexion.getConnection().prepareCall("{ CALL sp_obtener_total_salario_neto_tbl_detalle_planilla(?) }");
+        ps.setInt(1, idPlanilla); // Pasar el valor de idPlanilla como parámetro
+       
+        ResultSet rs = ps.executeQuery();
+        // Obtener el total del salario neto del conjunto de resultados
+        if (rs.next()) {
+            totalSalarioNeto = rs.getDouble(1);
+        }
+        System.out.println(totalSalarioNeto);
+        return totalSalarioNeto;
+    } catch (SQLException e) {
+        System.out.println("Error: " + e.getMessage());
+        return 0;
+    }
+}*/
+
+
+
 
 }

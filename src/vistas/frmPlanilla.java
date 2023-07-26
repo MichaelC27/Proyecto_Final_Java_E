@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vistas;
+
 import controlador.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author dbpan
@@ -90,6 +92,7 @@ public class frmPlanilla extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtPlanilla);
 
         btnCrear.setBackground(new java.awt.Color(138, 213, 255));
+        btnCrear.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCrear.setForeground(new java.awt.Color(255, 255, 255));
         btnCrear.setText("Crear");
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +102,7 @@ public class frmPlanilla extends javax.swing.JFrame {
         });
 
         btnVer.setBackground(new java.awt.Color(138, 213, 255));
+        btnVer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnVer.setForeground(new java.awt.Color(255, 255, 255));
         btnVer.setText("Ver");
         btnVer.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +112,7 @@ public class frmPlanilla extends javax.swing.JFrame {
         });
 
         btnCerrar.setBackground(new java.awt.Color(138, 213, 255));
+        btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +122,7 @@ public class frmPlanilla extends javax.swing.JFrame {
         });
 
         btnActualizar.setBackground(new java.awt.Color(138, 213, 255));
+        btnActualizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +159,7 @@ public class frmPlanilla extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrear)
                     .addComponent(btnVer)
@@ -178,10 +184,10 @@ public class frmPlanilla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtPlanillaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jtPlanillaPropertyChange
-  
+
     }//GEN-LAST:event_jtPlanillaPropertyChange
-public void cargarDetallePlanilla() {
-             DefaultTableModel modelo = (DefaultTableModel) jtPlanilla.getModel();
+    public void cargarDetallePlanilla() {
+        DefaultTableModel modelo = (DefaultTableModel) jtPlanilla.getModel();
 
         //Borrar datos
         int cantidad = modelo.getRowCount();
@@ -210,7 +216,7 @@ public void cargarDetallePlanilla() {
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         frmCrearPlanilla frm = new frmCrearPlanilla();
         frm.setVisible(true);
-        frm.setTitle("Crear Planilla");
+        this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
@@ -223,17 +229,20 @@ public void cargarDetallePlanilla() {
         frm.setVisible(true);
         frm.setTitle("Detalle Planilla");
     }//GEN-LAST:event_btnVerActionPerformed
-  private int obtenerIDPlanillaSeleccionada() {
+    private int obtenerIDPlanillaSeleccionada() {
         int idPlanillaSeleccionada = -1; // Valor por defecto en caso de que no se seleccione ninguna fila
         int filaSeleccionada = jtPlanilla.getSelectedRow();
         if (filaSeleccionada != -1) {
             DefaultTableModel modelo = (DefaultTableModel) jtPlanilla.getModel();
             idPlanillaSeleccionada = Integer.parseInt(modelo.getValueAt(filaSeleccionada, 0).toString());
-        } 
+        }
         return idPlanillaSeleccionada; // Retorna el valor del campo "ID Planilla" o -1 si no se seleccionó ninguna fila
     }
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        frmMenu frm = new frmMenu();
+        frm.setVisible(true);
         dispose();
+ 
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed

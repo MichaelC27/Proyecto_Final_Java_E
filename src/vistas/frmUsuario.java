@@ -11,9 +11,11 @@ package vistas;
 import controlador.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 
 public class frmUsuario extends javax.swing.JFrame {
 
@@ -75,6 +77,9 @@ public class frmUsuario extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtUsuarios = new javax.swing.JTable();
+        btnCargar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,7 +104,7 @@ public class frmUsuario extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(469, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,6 +129,7 @@ public class frmUsuario extends javax.swing.JFrame {
         jLabel1.setText("Ingrese Cedula del Usuario");
 
         btnBuscar.setBackground(new java.awt.Color(102, 204, 255));
+        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +188,7 @@ public class frmUsuario extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtDireccion);
 
         btnSalir.setBackground(new java.awt.Color(102, 204, 255));
+        btnSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Cerrar");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +198,7 @@ public class frmUsuario extends javax.swing.JFrame {
         });
 
         btnEliminar.setBackground(new java.awt.Color(102, 204, 255));
+        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +208,7 @@ public class frmUsuario extends javax.swing.JFrame {
         });
 
         btnGuardar.setBackground(new java.awt.Color(102, 204, 255));
+        btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -209,6 +218,7 @@ public class frmUsuario extends javax.swing.JFrame {
         });
 
         btnModificar.setBackground(new java.awt.Color(102, 204, 255));
+        btnModificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -218,6 +228,7 @@ public class frmUsuario extends javax.swing.JFrame {
         });
 
         btnNuevo.setBackground(new java.awt.Color(102, 204, 255));
+        btnNuevo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -233,9 +244,9 @@ public class frmUsuario extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(25, 25, 25)
                         .addComponent(btnNuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnModificar)
                         .addGap(18, 18, 18)
                         .addComponent(btnGuardar)
@@ -309,7 +320,7 @@ public class frmUsuario extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(61, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -329,15 +340,52 @@ public class frmUsuario extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jtUsuarios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jtUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cedula", "UserID", "Contraseña", "Nombre", "Apellido", "Direccion", "Fecha Registro"
+            }
+        ));
+        jtUsuarios.setGridColor(new java.awt.Color(153, 153, 153));
+        jtUsuarios.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(jtUsuarios);
+
+        btnCargar1.setBackground(new java.awt.Color(138, 213, 255));
+        btnCargar1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCargar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnCargar1.setText("Cargar");
+        btnCargar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(btnCargar1)
+                .addContainerGap(509, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 741, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(btnCargar1)
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Usuarios", jPanel3);
@@ -349,8 +397,8 @@ public class frmUsuario extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,6 +434,8 @@ public class frmUsuario extends javax.swing.JFrame {
         }
     }
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        frmMenu frm = new frmMenu();
+        frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
@@ -488,12 +538,12 @@ public class frmUsuario extends javax.swing.JFrame {
         txtDireccion.setBackground(Color.WHITE);
         txtDireccion.setForeground(Color.BLACK);
         btnEliminar.setEnabled(false);
-           for (JTextField textField : textFieldsToStyle) {
+        for (JTextField textField : textFieldsToStyle) {
             if (textField != null) { // Verificar que el textField no sea nulo
                 if (!textField.isEnabled()) {
                     // Cambiar color de fondo y texto para campos inhabilitados
-                    textField.setBackground(new Color(244, 246, 247 ));
-                    textField.setForeground(new Color(244, 246, 247 ));
+                    textField.setBackground(new Color(244, 246, 247));
+                    textField.setForeground(new Color(244, 246, 247));
                 } else {
                     // Restablecer colores originales para campos habilitados
                     textField.setBackground(Color.WHITE);
@@ -522,8 +572,8 @@ public class frmUsuario extends javax.swing.JFrame {
             if (textField != null) { // Verificar que el textField no sea nulo
                 if (!textField.isEnabled()) {
                     // Cambiar color de fondo y texto para campos inhabilitados
-                    textField.setBackground(new Color(244, 246, 247 ));
-                    textField.setForeground(new Color(244, 246, 247 ));
+                    textField.setBackground(new Color(244, 246, 247));
+                    textField.setForeground(new Color(244, 246, 247));
                 } else {
                     // Restablecer colores originales para campos habilitados
                     textField.setBackground(Color.WHITE);
@@ -541,7 +591,7 @@ public class frmUsuario extends javax.swing.JFrame {
         if (txtBusqueda.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar una cedula");
             txtBusqueda.requestFocus();
-             inhabilitar();
+            inhabilitar();
         } else {
             btnNuevo.setEnabled(false);
             if (obj != null) {
@@ -560,6 +610,27 @@ public class frmUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnCargar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargar1ActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) jtUsuarios.getModel();
+
+        modelo.setRowCount(0);
+        DefaultTableModel modeloDetalle = (DefaultTableModel) jtUsuarios.getModel();
+        modeloDetalle.setRowCount(0); // Limpiar el contenido actual de la tabla jtPlanilla
+        Usuario obj_usuario = new Usuario();
+        ArrayList<Usuario> lista_usuarios = obj_usuario.mostrar_usuarios();
+            for (Usuario usuario : lista_usuarios) {
+                // Agregar una nueva fila a la tabla con los datos del usuario
+                modelo.addRow(new Object[]{
+                    usuario.getCedula(),
+                    usuario.getUsuario(),
+                    usuario.getNombre(),
+                    usuario.getApellido(),
+                    usuario.getCorreo(),
+                    usuario.getDireccion(),
+                    usuario.getFecha_creacion(),});
+            }
+    }//GEN-LAST:event_btnCargar1ActionPerformed
+
     public void inhabilitar() {
         btnBuscar.setEnabled(true);
         txtBusqueda.setEnabled(true);
@@ -569,19 +640,19 @@ public class frmUsuario extends javax.swing.JFrame {
         txtNombre.setEnabled(false);
         txtApellido.setEnabled(false);
         txtDireccion.setEnabled(false);
-        txtDireccion.setBackground(new Color(244, 246, 247 ));
-        txtDireccion.setForeground(new Color(244, 246, 247 ));
+        txtDireccion.setBackground(new Color(244, 246, 247));
+        txtDireccion.setForeground(new Color(244, 246, 247));
         btnModificar.setEnabled(false);
         btnGuardar.setEnabled(false);
         btnEliminar.setEnabled(false);
-  
+
         // Cambiar estilo visual para campos inhabilitados
         for (JTextField textField : textFieldsToStyle) {
             if (textField != null) { // Verificar que el textField no sea nulo
                 if (!textField.isEnabled()) {
                     // Cambiar color de fondo y texto para campos inhabilitados
-                    textField.setBackground(new Color(244, 246, 247 ));
-                    textField.setForeground(new Color(244, 246, 247 ));
+                    textField.setBackground(new Color(244, 246, 247));
+                    textField.setForeground(new Color(244, 246, 247));
                 } else {
                     // Restablecer colores originales para campos habilitados
                     textField.setBackground(Color.WHITE);
@@ -593,7 +664,7 @@ public class frmUsuario extends javax.swing.JFrame {
 
     public void limpiar() {
         btnNuevo.setEnabled(true);
-        JTextField[] textFields = {txtBusqueda,txtCedula, txtUsuario, txtPassword, txtNombre, txtApellido};
+        JTextField[] textFields = {txtBusqueda, txtCedula, txtUsuario, txtPassword, txtNombre, txtApellido};
 
         for (JTextField textField : textFields) {
             textField.setText("");
@@ -638,6 +709,7 @@ public class frmUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCargar1;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
@@ -656,8 +728,10 @@ public class frmUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jtUsuarios;
     private javax.swing.JLabel lbApellido;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JTextField txtApellido;

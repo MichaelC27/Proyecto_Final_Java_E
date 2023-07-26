@@ -3,13 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vistas;
-
+import controlador.*;
 /**
  *
  * @author dbpan
  */
 public class frmMenu extends javax.swing.JFrame {
-
+private Session session = Session.getInstance();
     /**
      * Creates new form frmMenu
      */
@@ -29,8 +29,8 @@ public class frmMenu extends javax.swing.JFrame {
         javax.swing.JPanel bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        lblApellido = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -40,7 +40,7 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         lblPlanilla = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblSalir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,14 +51,23 @@ public class frmMenu extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(244, 244, 244));
-        jLabel2.setText("Nombre");
-        jLabel2.setToolTipText("");
+        lblApellido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblApellido.setForeground(new java.awt.Color(244, 244, 244));
+        lblApellido.setText("Apellido");
+        lblApellido.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblApellidoPropertyChange(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(244, 244, 244));
-        jLabel3.setText("Apellido");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Nombre");
+        jLabel2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jLabel2PropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,24 +76,26 @@ public class frmMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblApellido)
+                        .addGap(32, 32, 32))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addContainerGap(264, Short.MAX_VALUE))
+                    .addComponent(lblApellido)
+                    .addComponent(jLabel2))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 510));
@@ -136,6 +147,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         bg.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 120, 140));
 
+        label1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         label1.setText("Usuarios");
         bg.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
 
@@ -149,6 +161,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         bg.add(lblEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 130, 130));
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Empleados");
         bg.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, -1, -1));
 
@@ -161,17 +174,18 @@ public class frmMenu extends javax.swing.JFrame {
         });
         bg.add(lblPlanilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 120, 140));
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Planilla");
         bg.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, -1, 20));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salir.png"))); // NOI18N
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salir.png"))); // NOI18N
+        lblSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel6MousePressed(evt);
+                lblSalirMousePressed(evt);
             }
         });
-        bg.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, -1, -1));
+        bg.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,9 +212,9 @@ public class frmMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_lblUsuarioMousePressed
 
-    private void jLabel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MousePressed
-        this.dispose();
-    }//GEN-LAST:event_jLabel6MousePressed
+    private void lblSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMousePressed
+       dispose();
+    }//GEN-LAST:event_lblSalirMousePressed
 
     private void lblEmpleadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEmpleadoMousePressed
         FrmEmpleado frm = new FrmEmpleado();
@@ -213,6 +227,14 @@ public class frmMenu extends javax.swing.JFrame {
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblPlanillaMousePressed
+
+    private void lblApellidoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblApellidoPropertyChange
+       lblApellido.setText(session.getApellido());
+    }//GEN-LAST:event_lblApellidoPropertyChange
+
+    private void jLabel2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jLabel2PropertyChange
+        jLabel2.setText(session.getNombre());
+    }//GEN-LAST:event_jLabel2PropertyChange
 
     /**
      * @param args the command line arguments
@@ -253,16 +275,16 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private java.awt.Label label1;
+    private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblEmpleado;
     private javax.swing.JLabel lblPlanilla;
+    private javax.swing.JLabel lblSalir;
     private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 }

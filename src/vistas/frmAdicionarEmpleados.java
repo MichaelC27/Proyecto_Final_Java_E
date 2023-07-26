@@ -142,6 +142,7 @@ public class frmAdicionarEmpleados extends javax.swing.JFrame {
         });
 
         btnBuscar.setBackground(new java.awt.Color(138, 213, 255));
+        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Búscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -274,6 +275,7 @@ public class frmAdicionarEmpleados extends javax.swing.JFrame {
         );
 
         btnAgregar.setBackground(new java.awt.Color(138, 213, 255));
+        btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -283,6 +285,7 @@ public class frmAdicionarEmpleados extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(138, 213, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -319,7 +322,7 @@ public class frmAdicionarEmpleados extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(jButton2))
@@ -390,21 +393,46 @@ public class frmAdicionarEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String horasTrabajadasStr = txtHorasTrabajadas.getText().trim();
+        String salarioHoraStr = txtSalarioHora.getText().trim();
 
+        // Validar que las horas trabajadas sean mayor o igual a 4 y menor o igual a 12
+        try {
+            double horasTrabajadas = Double.parseDouble(horasTrabajadasStr);
+            if (horasTrabajadas < 4 || horasTrabajadas > 12) {
+                JOptionPane.showMessageDialog(null, "Las horas trabajadas deben estar entre 4 y 12");
+                return; // Salir del método sin agregar el empleado
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingresa un valor válido para las horas trabajadas");
+            return; // Salir del método sin agregar el empleado
+        }
+
+        // Validar que el salario por hora sea mayor o igual a 5 y menor o igual a 20
+        try {
+            double salarioHora = Double.parseDouble(salarioHoraStr);
+            if (salarioHora < 5 || salarioHora > 20) {
+                JOptionPane.showMessageDialog(null, "El salario por hora debe estar entre 5 y 20");
+                return; // Salir del método sin agregar el empleado
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingresa un valor válido para el salario por hora");
+            return; // Salir del método sin agregar el empleado
+        }
+
+        // Si los valores son válidos, procedemos a crear y guardar el objeto AdicionEmpleadoPlanilla
         AdicionEmpleadoPlanilla obj_empleado = new AdicionEmpleadoPlanilla();
         obj_empleado.setCedula_empleado(txtBusqueda.getText().trim());
-        obj_empleado.setHoras_trabajadas(Double.parseDouble(txtHorasTrabajadas.getText().trim()));
-        obj_empleado.setSalario_por_hora(Double.parseDouble(txtSalarioHora.getText().trim()));
+        obj_empleado.setHoras_trabajadas(Double.parseDouble(horasTrabajadasStr));
+        obj_empleado.setSalario_por_hora(Double.parseDouble(salarioHoraStr));
 
         int resultadoInsercion = obj_empleado.insertar();
-        //System.out.println("Resultado de la inserción: " + resultadoInsercion);
 
         if (resultadoInsercion > 0) {
-            JOptionPane.showMessageDialog(null, "Se inserto el empleado satisfactoriamente");
+            JOptionPane.showMessageDialog(null, "Se insertó el empleado satisfactoriamente");
             limpiar();
-            
         } else {
-            JOptionPane.showMessageDialog(null, "No se inserto");
+            JOptionPane.showMessageDialog(null, "No se pudo insertar el empleado");
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 

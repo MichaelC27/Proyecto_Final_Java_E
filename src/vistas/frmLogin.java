@@ -16,7 +16,9 @@ import javax.swing.border.Border;
  * @author dbpan
  */
 public class frmLogin extends javax.swing.JFrame {
- private JTextField[] textFieldsToStyle = new JTextField[2];
+
+    private JTextField[] textFieldsToStyle = new JTextField[2];
+
     /**
      * Creates new form frmLogin
      */
@@ -110,17 +112,16 @@ public class frmLogin extends javax.swing.JFrame {
         }
     }
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-         Login login = new Login();
+        Login login = new Login();
         Session session = Session.getInstance();
         boolean inicioSesionExitoso = login.iniciarSesion(txtUsuario.getText(), String.valueOf(txtContrasena.getPassword()));
         //System.out.println(inicioSesionExitoso);
         if (inicioSesionExitoso) {
-            JOptionPane.showMessageDialog(rootPane, "Inicio de sesión exitoso");
+            JOptionPane.showMessageDialog(rootPane, "Inicio de sesión exitoso", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             session.setUserid(txtUsuario.getText());
             dispose();
             frmMenu frm = new frmMenu();
             frm.setVisible(true);
-            frm.setTitle("Menu");
         } else {
             JOptionPane.showMessageDialog(rootPane, "Usuario y contraseña inválidos");
         }

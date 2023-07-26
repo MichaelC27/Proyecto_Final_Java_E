@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/dbpan/OneDrive/Escritorio/New%20Folder/ProyectoFinal/src/vistas/frmUsuario.java</file>
-            <file>file:/C:/Users/dbpan/OneDrive/Escritorio/New%20Folder/ProyectoFinal/src/vistas/frmlogin.java</file>
+            <file>file:/C:/Users/dbpan/OneDrive/Escritorio/New%20Folder/ProyectoFinal/src/vistas/frmMenu.java</file>
+            <file>file:/C:/Users/dbpan/OneDrive/Escritorio/New%20Folder/ProyectoFinal/src/vistas/frmDetallePlanilla.java</file>
+            <file>file:/C:/Users/dbpan/OneDrive/Escritorio/New%20Folder/ProyectoFinal/src/controlador/MostrarDetallePlanilla.java</file>
+            <file>file:/C:/Users/dbpan/OneDrive/Escritorio/New%20Folder/ProyectoFinal/src/vistas/frmLogin.java</file>
         </group>
     </open-files>
 </project-private>
