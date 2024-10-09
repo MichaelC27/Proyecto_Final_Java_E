@@ -117,7 +117,7 @@ public class frmLogin extends javax.swing.JFrame {
         boolean inicioSesionExitoso = login.iniciarSesion(txtUsuario.getText(), String.valueOf(txtContrasena.getPassword()));
         //System.out.println(inicioSesionExitoso);
         if (inicioSesionExitoso) {
-            JOptionPane.showMessageDialog(rootPane, "Inicio de sesión exitoso", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Inicio de sesión exitoso");
             session.setUserid(txtUsuario.getText());
             dispose();
             frmMenu frm = new frmMenu();
